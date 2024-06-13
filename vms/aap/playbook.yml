@@ -1,0 +1,26 @@
+---
+- name: Create VM
+  hosts: localhost
+  gather_facts: no
+  vars:
+    name: "{{ name }}"
+    namespace: "{{ namespace }}"
+    memory: "{{ memory }}"
+    cpu: "{{ cpu }}"
+    disk: "{{ disk }}"
+  # vars:
+  #   name: "test"
+  #   namespace: "default"
+  #   memory: "2"
+  #   cpu: "1"
+  #   disk: "30"
+  tasks:
+    - name: Render VM template
+      ansible.builtin.template:
+        src: templates/vm.yml.j2
+        dest: /tmp/vm.yml
+
+    - name: Create VM
+      kubernetes.core.k8s:
+        state: present
+        definition: "{{ lookup('file', '/tmp/vm.yml') }}"
