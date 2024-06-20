@@ -12,6 +12,11 @@
         password: "{{ 'password3' | password_hash('sha512') }}"
 
   tasks:
+    - name: Print all hosts
+      ansible.builtin.debug:
+        msg: "{{ item }}"
+      loop: "{{ groups['all'] }}"
+    
     - name: Create users
       ansible.builtin.user:
         name: "{{ item.username }}"
