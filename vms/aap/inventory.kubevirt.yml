@@ -1,4 +1,4 @@
 plugin: kubevirt.core.kubevirt
 connections:
-- namespaces:
-  - openshift-cnv
+  - namespaces:
+    - openshift-cnv
