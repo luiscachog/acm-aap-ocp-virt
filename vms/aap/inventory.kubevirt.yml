@@ -1,5 +1,5 @@
 plugin: kubevirt.core.kubevirt
 connections:
-  - host:https://api.hub1.sandbox1227.opentlc.com:6443
-    token: sha256~s6RF_RLjAd7mb_oKhc_yKUFAqSIgHB_DrDmzV8Danag
+  - host: "https://api.hub1.sandbox1227.opentlc.com:6443"
+    token: "sha256~s6RF_RLjAd7mb_oKhc_yKUFAqSIgHB_DrDmzV8Danag"
     ssl_verify: false
