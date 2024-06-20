@@ -1,0 +1,5 @@
+plugin: kubevirt
+connections:
+  - host: "{{ lookup('env', 'K8S_AUTH_HOST') }}"
+    token:  "{{ lookup('env', 'K8S_AUTH_API_KEY') }}"
+    ssl_verify: false
