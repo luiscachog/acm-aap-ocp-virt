@@ -1,0 +1,15 @@
+---
+collections:
+- name: redhat.openshift
+- name: kubernetes.core
+- name: community.general
+- name: dellemc.openmanage
+- name: infoblox.nios_modules
+- name: vmware.vmware_rest
+- name: community.vmware
+- name: infra.aap_utilities
+- name: infra.controller_configuration
+- name: ansible.controller
+- name: community.crypto
+- name: ansible.posix
+- name: kubevirt.core
