@@ -1,5 +1,5 @@
-plugin: kubevirt
+plugin: kubevirt.core.kubevirt
 connections:
-  - host: "{{ lookup('env', 'K8S_AUTH_HOST') }}"
-    token:  "{{ lookup('env', 'K8S_AUTH_API_KEY') }}"
-    ssl_verify: false
+  - host: "https://api.hub1.sandbox1227.opentlc.com:6443"
+    token: sha256~s6RF_RLjAd7mb_oKhc_yKUFAqSIgHB_DrDmzV8Danag
+    validate_certs: false
