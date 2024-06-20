@@ -1,0 +1,38 @@
+---
+- name: Create VM
+  hosts: localhost
+  gather_facts: no
+  vars:
+    name: "{{ name }}"
+    namespace: "{{ namespace }}"
+    memory: "{{ memory }}"
+    cpu: "{{ cpu }}"
+    disk: "{{ disk }}"
+    
+  # vars:
+  #   name: "test"
+  #   namespace: "default"
+  #   memory: "2"
+  #   cpu: "1"
+  #   disk: "30"
+  tasks:
+
+    - name: Log in to OpenShift cluster (obtain access token)
+      redhat.openshift.openshift_auth:
+        host: "{{ openshift_host }}"
+        username: "{{ openshift_admin_username }}"
+        password: "{{ openshift_admin_password }}"
+        validate_certs: "{{ openshift_validate_certs }}"
+      register: openshift_auth_result
+    
+    - name: Render VM template
+      ansible.builtin.template:
+        src: templates/vm.yml.j2
+        dest: /tmp/vm.yml
+
+    - name: Create VM
+      kubernetes.core.k8s:
+        api_key: "{{ openshift_auth_result.openshift_auth.api_key }}"
+        validate_certs: "{{ openshift_validate_certs }}"
+        state: present
+        definition: "{{ lookup('file', '/tmp/vm.yml') }}"
