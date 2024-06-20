@@ -8,9 +8,6 @@
     memory: "{{ memory }}"
     cpu: "{{ cpu }}"
     disk: "{{ disk }}"
-    openshift_host: "{{ lookup('env', 'K8S_AUTH_HOST') }}"
-    openshift_admin_username: "{{ lookup('env', 'K8S_AUTH_USERNAME') }}"
-    openshift_validate_certs: "{{ lookup('env', 'K8S_AUTH_VERIFY_SSL') }}"
     
   # vars:
   #   name: "test"
