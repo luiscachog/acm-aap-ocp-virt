@@ -2,7 +2,7 @@ apiVersion: pool.kubevirt.io/v1alpha1
 kind: VirtualMachinePool
 metadata:
   name: my-vm-pool
-   annotations:
+  annotations:
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
       - /spec/replicas
