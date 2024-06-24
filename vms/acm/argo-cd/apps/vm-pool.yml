@@ -91,7 +91,7 @@ spec:
               name: rootdisk
             - cloudInitNoCloud:
                 userDataSecretRef:
-                  name: vm-password-{{vmname}}
+                  name: vm-password
               name: cloudinitdisk
   dataVolumeTemplates:
     - apiVersion: cdi.kubevirt.io/v1beta1
