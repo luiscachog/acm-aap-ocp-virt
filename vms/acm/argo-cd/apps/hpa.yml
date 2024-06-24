@@ -1,0 +1,13 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  creationTimestamp: null
+  name: vm-pool-autoscaler
+spec:
+  maxReplicas: 8
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: pool.kubevirt.io/v1alpha1
+    kind: VirtualMachinePool
+    name: my-vm-pool
+  targetCPUUtilizationPercentage: 40
