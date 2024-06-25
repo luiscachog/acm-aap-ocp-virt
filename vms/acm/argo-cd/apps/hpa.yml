@@ -4,6 +4,9 @@ metadata:
   creationTimestamp: null
   name: vm-pool-autoscaler
 spec:
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 60
   maxReplicas: 8
   minReplicas: 2
   scaleTargetRef:
