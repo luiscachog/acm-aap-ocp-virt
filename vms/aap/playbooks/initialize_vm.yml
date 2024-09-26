@@ -1,0 +1,39 @@
+---
+- name: User creation and Nginx installation
+  hosts: all
+  become: true
+  vars:
+    users:
+      - username: user1
+        password: "{{ 'password1' | password_hash('sha512') }}"
+      - username: user2
+        password: "{{ 'password2' | password_hash('sha512') }}"
+      - username: user3
+        password: "{{ 'password3' | password_hash('sha512') }}"
+
+  tasks:
+    - name: Print all hosts
+      ansible.builtin.debug:
+        msg: "{{ item }}"
+      loop: "{{ groups['all'] }}"
+    
+    - name: Create users
+      ansible.builtin.user:
+        name: "{{ item.username }}"
+        password: "{{ item.password }}"
+        state: present
+      loop: "{{ users }}"
+      tags: create_users
+
+    - name: Install Nginx
+      ansible.builtin.package:
+        name: nginx
+        state: present
+      tags: install_nginx
+
+    - name: Start and enable Nginx service
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+      tags: start_nginx

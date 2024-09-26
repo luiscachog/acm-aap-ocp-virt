@@ -1,0 +1,5 @@
+plugin: kubevirt.core.kubevirt
+connections:
+  - host:
+    token:
+    validate_certs: false
